@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Bayangan di Balik Hujan - RPG</title>
+  <style>
+    body {
+      background: black;
+      color: #eee;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    .story-box {
+      max-width: 800px;
+      margin: auto;
+      background: #111;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #666;
+    }
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-top: 10px;
+    }
+    .fade {
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="story-box fade" id="game">
+    <h2>🔄 Memuat...</h2>
+  </div>
+
+  <script>
+    const game = document.getElementById("game");
+
+    let player = {
+      name: "",
+      emosi: 0,
+      harapan: 0
+    };
+
+    const scenes = {
+      intro: {
+        text: `🎬 <b>XOBE DEVELOPMENT</b><br>🎮 bersama <b>FouRkiting Studios</b><br><br>mempersembahkan...`,
+        options: [{ text: "▶️ Lanjut", next: "title" }]
+      },
+      title: {
+        text: `🌧️ <span style="font-size:24px">"Bayangan di Balik Hujan"</span><br><br><i>Sebuah kisah tentang luka, harapan, dan kenangan...</i>`,
+        options: [{ text: "📝 Mulai Permainan", next: "name" }]
+      },
+      name: {
+        text: `Masukkan nama karaktermu untuk memulai petualangan: <br><input id="nameInput" placeholder="Namamu..." />`,
+        options: [{ text: "✅ Konfirmasi", next: "scene1", custom: true }]
+      },
+      scene1: {
+        text: () => `Hujan turun membasahi malam. Kamu, ${player.name}, duduk sendirian di halte kota yang sepi.\n\nKamu menggenggam kenangan yang tak pernah selesai...`,
+        options: [
+          { text: "💭 Renungkan masa lalu", next: "renung", effect: () => player.emosi += 1 },
+          { text: "📱 Lihat ponsel", next: "ponsel", effect: () => player.harapan += 1 }
+        ]
+      },
+      renung: {
+        text: () => `Kamu mengingat wajah seseorang... seseorang yang pernah kamu sebut rumah.\n\nAir hujan bercampur air mata.`,
+        options: [
+          { text: "Tunggu di halte", next: "scene2_wait" },
+          { text: "Pergi jalan kaki", next: "scene2_walk" }
+        ]
+      },
+      ponsel: {
+        text: () => `Tak ada pesan. Hanya notifikasi kosong. Tapi... satu nama muncul di layar. Mira.\n\nSeseorang dari masa lalu.`,
+        options: [
+          { text: "Buka pesannya", next: "scene2_msg", effect: () => player.harapan += 1 },
+          { text: "Abaikan", next: "scene2_ignore", effect: () => player.emosi += 1 }
+        ]
+      },
+      scene2_msg: {
+        text: () => `"<i>Apakah kamu masih di sana... di tempat kita biasa menunggu?</i>"\n\nHati kecilmu bergetar.`,
+        options: [
+          { text: "Tunggu dia", next: "scene3_mira" },
+          { text: "Balas: Aku sudah berubah", next: "scene3_alt" }
+        ]
+      },
+      scene2_ignore: {
+        text: `Kamu matikan layar. Tapi rasa hampa makin dalam. Kau sadar, sebagian dirimu hilang.`,
+        options: [{ text: "🔁 Main Ulang", next: "title" }]
+      },
+      scene2_wait: {
+        text: `Kamu menunggu.\n\nJam demi jam berlalu.\n\nSeseorang datang... itu dia.`,
+        options: [{ text: "🧍‍♂️ Sapa dia", next: "scene3_mira" }]
+      },
+      scene2_walk: {
+        text: `Kamu meninggalkan halte.\n\nTapi jejak langkahmu berat. Seperti hati yang belum selesai.`,
+        options: [{ text: "🔁 Main Ulang", next: "title" }]
+      },
+      scene3_mira: {
+        text: () => `Mira berdiri di hadapanmu, senyum lelah tapi hangat.\n\n💬 "Kau kembali, seperti yang kau janjikan."`,
+        options: [
+          { text: "Aku tak pernah benar-benar pergi", next: "ending_baik" },
+          { text: "Aku cuma ingin jawaban", next: "ending_pahit" }
+        ]
+      },
+      scene3_alt: {
+        text: `Mira tak membalas. Mungkin kamu terlambat.\n\nHujan masih turun, seperti tangis yang tak terdengar.`,
+        options: [{ text: "🔁 Main Ulang", next: "title" }]
+      },
+      ending_baik: {
+        text: () => `Mereka bicara hingga pagi. Kadang, yang patah bisa tumbuh lagi.\n\n🌤️ <b>Akhir Harapan</b><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
+        options: [{ text: "🔁 Main Ulang", next: "title" }]
+      },
+      ending_pahit: {
+        text: () => `Mira mengangguk, tapi matanya berkata lain.\n\n💔 "Beberapa janji tak harus ditepati... jika menyakitkan."\n\n🌫️ <b>Akhir Luka</b><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
+        options: [{ text: "🔁 Main Ulang", next: "title" }]
+      }
+    };
+
+    function showScene(key) {
+      const scene = scenes[key];
+      if (!scene) return;
+
+      let html = typeof scene.text === "function" ? scene.text() : scene.text;
+      game.innerHTML = `<p class="fade">${html.toString().replace(/\n/g, "<br>")}</p>`;
+
+      if (scene.options) {
+        scene.options.forEach(opt => {
+          const btn = document.createElement("button");
+          btn.textContent = opt.text;
+          btn.onclick = () => {
+            if (opt.custom) {
+              const input = document.getElementById("nameInput");
+              if (input && input.value) {
+                player.name = input.value;
+                showScene(opt.next);
+              }
+            } else {
+              if (opt.effect) opt.effect();
+              showScene(opt.next);
+            }
+          };
+          game.appendChild(btn);
+        });
+      }
+    }
+
+    showScene("intro");
+  </script>
+</body>
+</html>
