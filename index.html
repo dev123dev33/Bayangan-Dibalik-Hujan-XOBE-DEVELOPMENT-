@@ -39,17 +39,17 @@
       margin-top: 10px;
     }
     .fade {
-      animation: fadeIn 1s ease;
+      animation: fadeIn 1.2s ease;
     }
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <div class="story-box fade" id="game">
-    <h2>🔄 Memuat...</h2>
+    <h2>Memuat...</h2>
   </div>
 
   <script>
@@ -61,11 +61,25 @@
       harapan: 0
     };
 
+    const introLines = [
+      "🎬 <b>XOBE DEVELOPMENT</b>",
+      "🎮 bersama <b>FouRkiting Studios</b>",
+      "<br><br>mempersembahkan..."
+    ];
+
+    let introIndex = 0;
+
+    function playIntro() {
+      if (introIndex < introLines.length) {
+        game.innerHTML = `<p class="fade">${introLines[introIndex]}</p>`;
+        introIndex++;
+        setTimeout(playIntro, 1800);
+      } else {
+        setTimeout(() => showScene("title"), 1500);
+      }
+    }
+
     const scenes = {
-      intro: {
-        text: `🎬 <b>XOBE DEVELOPMENT</b><br>🎮 bersama <b>FouRkiting Studios</b><br><br>mempersembahkan...`,
-        options: [{ text: "▶️ Lanjut", next: "title" }]
-      },
       title: {
         text: `🌧️ <span style="font-size:24px">"Bayangan di Balik Hujan"</span><br><br><i>Sebuah kisah tentang luka, harapan, dan kenangan...</i>`,
         options: [{ text: "📝 Mulai Permainan", next: "name" }]
@@ -75,62 +89,95 @@
         options: [{ text: "✅ Konfirmasi", next: "scene1", custom: true }]
       },
       scene1: {
-        text: () => `Hujan turun membasahi malam. Kamu, ${player.name}, duduk sendirian di halte kota yang sepi.\n\nKamu menggenggam kenangan yang tak pernah selesai...`,
+        text: () => `Hujan turun membasahi malam. Kamu, ${player.name}, duduk sendiri di halte yang dingin dan sepi.<br><br>Di tanganmu, kenangan masih basah...`,
         options: [
           { text: "💭 Renungkan masa lalu", next: "renung", effect: () => player.emosi += 1 },
           { text: "📱 Lihat ponsel", next: "ponsel", effect: () => player.harapan += 1 }
         ]
       },
       renung: {
-        text: () => `Kamu mengingat wajah seseorang... seseorang yang pernah kamu sebut rumah.\n\nAir hujan bercampur air mata.`,
+        text: () => `Wajahnya hadir kembali... senyumnya yang dulu menghangatkan dunia kecilmu.<br><br>Air hujan bercampur air mata.`,
         options: [
           { text: "Tunggu di halte", next: "scene2_wait" },
           { text: "Pergi jalan kaki", next: "scene2_walk" }
         ]
       },
       ponsel: {
-        text: () => `Tak ada pesan. Hanya notifikasi kosong. Tapi... satu nama muncul di layar. Mira.\n\nSeseorang dari masa lalu.`,
+        text: () => `Tak ada pesan. Notifikasi kosong. Tapi... satu nama muncul. <b>Mira</b>.<br><br>Hatinya pernah menyentuh hatimu.`,
         options: [
           { text: "Buka pesannya", next: "scene2_msg", effect: () => player.harapan += 1 },
           { text: "Abaikan", next: "scene2_ignore", effect: () => player.emosi += 1 }
         ]
       },
       scene2_msg: {
-        text: () => `"<i>Apakah kamu masih di sana... di tempat kita biasa menunggu?</i>"\n\nHati kecilmu bergetar.`,
+        text: () => `"<i>Apakah kamu masih di sana... di tempat kita biasa menunggu?</i>"<br><br>Hati kecilmu bergetar.`,
         options: [
           { text: "Tunggu dia", next: "scene3_mira" },
           { text: "Balas: Aku sudah berubah", next: "scene3_alt" }
         ]
       },
       scene2_ignore: {
-        text: `Kamu matikan layar. Tapi rasa hampa makin dalam. Kau sadar, sebagian dirimu hilang.`,
+        text: `Layar mati. Tapi hati tak pernah benar-benar padam. Sunyi lebih menusuk dari hujan.`,
         options: [{ text: "🔁 Main Ulang", next: "title" }]
       },
       scene2_wait: {
-        text: `Kamu menunggu.\n\nJam demi jam berlalu.\n\nSeseorang datang... itu dia.`,
+        text: `Jam demi jam berlalu. Sepasang kaki mendekat. Itu dia. Mira.`,
         options: [{ text: "🧍‍♂️ Sapa dia", next: "scene3_mira" }]
       },
       scene2_walk: {
-        text: `Kamu meninggalkan halte.\n\nTapi jejak langkahmu berat. Seperti hati yang belum selesai.`,
+        text: `Langkahmu menjauh. Tapi setiap jejak membawa rasa rindu yang tak selesai.`,
         options: [{ text: "🔁 Main Ulang", next: "title" }]
       },
       scene3_mira: {
-        text: () => `Mira berdiri di hadapanmu, senyum lelah tapi hangat.\n\n💬 "Kau kembali, seperti yang kau janjikan."`,
+        text: () => `Mira berdiri di hadapanmu. Senyumnya lelah, tapi matanya masih menyimpan hangatnya masa lalu.<br><br>💬 "Kau datang... seperti yang dulu kau janjikan."`,
         options: [
           { text: "Aku tak pernah benar-benar pergi", next: "ending_baik" },
           { text: "Aku cuma ingin jawaban", next: "ending_pahit" }
         ]
       },
       scene3_alt: {
-        text: `Mira tak membalas. Mungkin kamu terlambat.\n\nHujan masih turun, seperti tangis yang tak terdengar.`,
+        text: `Tak ada balasan. Mungkin, kamu datang terlalu lambat. Hujan tetap turun, menemani keheningan.`,
         options: [{ text: "🔁 Main Ulang", next: "title" }]
       },
+
+      // === ENDING DENGAN DUA PILIHAN ===
       ending_baik: {
-        text: () => `Mereka bicara hingga pagi. Kadang, yang patah bisa tumbuh lagi.\n\n🌤️ <b>Akhir Harapan</b><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
-        options: [{ text: "🔁 Main Ulang", next: "title" }]
+        text: () => `Mereka bicara hingga pagi. Kadang, yang patah bisa tumbuh lagi.<br><br>🌤️ <b>Akhir Harapan</b><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
+        options: [
+          { text: "📖 Lanjut ke Bab 2", next: "scene4" },
+          { text: "🔁 Main Ulang", next: "title" }
+        ]
       },
       ending_pahit: {
-        text: () => `Mira mengangguk, tapi matanya berkata lain.\n\n💔 "Beberapa janji tak harus ditepati... jika menyakitkan."\n\n🌫️ <b>Akhir Luka</b><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
+        text: () => `Mira mengangguk, tapi keheningan berkata lebih banyak.<br><br>💔 "Beberapa janji tak perlu ditepati jika menyakitkan."<br><br>🌫️ <b>Akhir Luka</b><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
+        options: [
+          { text: "📖 Lanjut ke Bab 2", next: "scene4" },
+          { text: "🔁 Main Ulang", next: "title" }
+        ]
+      },
+
+      // === BAB 2 ===
+      scene4: {
+        text: () => `🕊️ <b>Bab 2: Setelah Hujan</b><br><br>Pagi menyambutmu dan Mira. Secangkir teh, suara burung, dan senyum yang mencoba tumbuh kembali.`,
+        options: [
+          { text: "🌼 Bicarakan masa depan", next: "scene5", effect: () => player.harapan += 2 },
+          { text: "🕳️ Bicara tentang kesalahan", next: "scene6", effect: () => player.emosi += 2 }
+        ]
+      },
+      scene5: {
+        text: () => `Kalian membicarakan impian-impian yang dulu terkubur. Mungkin belum terlambat untuk menanam kembali harapan.`,
+        options: [{ text: "📚 Tamatkan Bab 2", next: "ending2_harapan" }]
+      },
+      scene6: {
+        text: () => `Air mata tak bisa ditahan. Tapi dari tangis itu, ada kejujuran yang akhirnya keluar.`,
+        options: [{ text: "📚 Tamatkan Bab 2", next: "ending2_emosi" }]
+      },
+      ending2_harapan: {
+        text: () => `🌈 <b>Akhir Baru</b><br>Mereka tak sempurna, tapi kini saling menjaga arah.<br><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
+        options: [{ text: "🔁 Main Ulang", next: "title" }]
+      },
+      ending2_emosi: {
+        text: () => `⚡ <b>Kebenaran yang Menyakitkan</b><br>Tapi kadang, kejujuran lebih penting dari kebahagiaan palsu.<br><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
         options: [{ text: "🔁 Main Ulang", next: "title" }]
       }
     };
@@ -163,7 +210,8 @@
       }
     }
 
-    showScene("intro");
+    // Mulai dari intro
+    playIntro();
   </script>
 </body>
 </html>
