@@ -64,6 +64,7 @@
     const introLines = [
       "🎬 <b>XOBE DEVELOPMENT</b>",
       "🎮 bersama <b>FouRkiting Studios</b>",
+      "🆕 <b>Versi 1.3 - Bab Baru: Pelangi Setelah Badai!</b>",
       "<br><br>mempersembahkan..."
     ];
 
@@ -89,7 +90,10 @@
         options: [{ text: "✅ Konfirmasi", next: "scene1", custom: true }]
       },
       scene1: {
-        text: () => `Hujan turun membasahi malam. Kamu, ${player.name}, duduk sendiri di halte yang dingin dan sepi.<br><br>Di tanganmu, kenangan masih basah...`,
+        text: () => `
+          Hujan turun membasahi malam. Kamu, ${player.name}, duduk sendiri di halte yang dingin dan sepi.<br><br>
+          Di tanganmu, kenangan masih basah...
+        `,
         options: [
           { text: "💭 Renungkan masa lalu", next: "renung", effect: () => player.emosi += 1 },
           { text: "📱 Lihat ponsel", next: "ponsel", effect: () => player.harapan += 1 }
@@ -139,8 +143,6 @@
         text: `Tak ada balasan. Mungkin, kamu datang terlalu lambat. Hujan tetap turun, menemani keheningan.`,
         options: [{ text: "🔁 Main Ulang", next: "title" }]
       },
-
-      // === ENDING DENGAN DUA PILIHAN ===
       ending_baik: {
         text: () => `Mereka bicara hingga pagi. Kadang, yang patah bisa tumbuh lagi.<br><br>🌤️ <b>Akhir Harapan</b><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
         options: [
@@ -155,8 +157,6 @@
           { text: "🔁 Main Ulang", next: "title" }
         ]
       },
-
-      // === BAB 2 ===
       scene4: {
         text: () => `🕊️ <b>Bab 2: Setelah Hujan</b><br><br>Pagi menyambutmu dan Mira. Secangkir teh, suara burung, dan senyum yang mencoba tumbuh kembali.`,
         options: [
@@ -174,10 +174,61 @@
       },
       ending2_harapan: {
         text: () => `🌈 <b>Akhir Baru</b><br>Mereka tak sempurna, tapi kini saling menjaga arah.<br><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
-        options: [{ text: "🔁 Main Ulang", next: "title" }]
+        options: [
+          { text: "📖 Lanjut ke Bab 3", next: "scene7" },
+          { text: "🔁 Main Ulang", next: "title" }
+        ]
       },
       ending2_emosi: {
         text: () => `⚡ <b>Kebenaran yang Menyakitkan</b><br>Tapi kadang, kejujuran lebih penting dari kebahagiaan palsu.<br><br>Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
+        options: [
+          { text: "📖 Lanjut ke Bab 3", next: "scene7" },
+          { text: "🔁 Main Ulang", next: "title" }
+        ]
+      },
+      scene7: {
+        text: () => `🌤️ <b>Bab 3: Pelangi Setelah Badai</b><br><br>Beberapa bulan telah berlalu. Hubunganmu dengan Mira semakin dalam, namun tantangan baru muncul...`,
+        options: [
+          { 
+            text: "🏡 Renovasi rumah bersama", 
+            next: "scene8",
+            effect: () => player.harapan += 1 
+          },
+          { 
+            text: "🗝️ Kunjungi tempat kenangan", 
+            next: "scene9",
+            effect: () => player.emosi += 1 
+          }
+        ]
+      },
+      scene8: {
+        text: () => `Kalian bekerja sama, menemukan keindahan dalam kerja keras. Tapi sebuah surat misterius tiba...`,
+        options: [
+          { text: "📖 Baca surat", next: "ending3_surat" },
+          { text: "🔥 Hancurkan surat", next: "ending3_hancur" }
+        ]
+      },
+      scene9: {
+        text: () => `Tempat itu masih sama. Tapi Mira terlihat gelisah. "Aku harus memberitahumu sesuatu..."`,
+        options: [
+          { text: "👂 Dengarkan dia", next: "ending3_dengar" },
+          { text: "🚶 Pergi", next: "ending3_pergi" }
+        ]
+      },
+      ending3_surat: {
+        text: () => `Surat itu berisi tawaran kerja di luar kota. Kalian memutuskan pergi bersama. 🌈<br><br><b>Akhir: Perjalanan Baru</b><br>Stats Akhir: Emosi ${player.emosi} | Harapan ${player.harapan}`,
+        options: [{ text: "🔁 Main Ulang", next: "title" }]
+      },
+      ending3_hancur: {
+        text: () => `Mira marah. Tapi akhirnya, kalian memilih untuk tetap disini. �<br><br><b>Akhir: Rumah Kami</b><br>Stats Akhir: Emosi ${player.emosi} | Harapan ${player.harapan}`,
+        options: [{ text: "🔁 Main Ulang", next: "title" }]
+      },
+      ending3_dengar: {
+        text: () => `Mira mengaku akan pindah. Tapi kali ini, kalian berjanji tak terpisahkan. ✉️<br><br><b>Akhir: Janji Abadi</b><br>Stats Akhir: Emosi ${player.emosi} | Harapan ${player.harapan}`,
+        options: [{ text: "🔁 Main Ulang", next: "title" }]
+      },
+      ending3_pergi: {
+        text: () => `Kamu pergi, meninggalkan Mira. Hujan kembali turun... 🌧️<br><br><b>Akhir: Hujan Kembali</b><br>Stats Akhir: Emosi ${player.emosi} | Harapan ${player.harapan}`,
         options: [{ text: "🔁 Main Ulang", next: "title" }]
       }
     };
