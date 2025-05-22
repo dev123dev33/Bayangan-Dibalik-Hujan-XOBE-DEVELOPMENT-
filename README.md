@@ -1,20 +1,8 @@
-📌 Update 1.1 – Mei 2025
+📌 Update 1.3 – Mei 2025
 ✨ Fitur Baru:
 
-🔓 Bab 2: Setelah Hujan — kelanjutan cerita setelah ending Bab 1.
-
-🌱 2 Ending Baru: “Akhir Baru” & “Kebenaran yang Menyakitkan”.
-
-🎮 Pilihan untuk Lanjut ke Bab 2 atau Main Ulang setelah menyelesaikan ending.
-
-🔧 Perbaikan & Penyempurnaan:
-
-Efek transisi intro lebih halus dan sinematik.
-
-Dialog diperhalus agar lebih menyentuh dan puitis.
-
-Alur pilihan lebih dinamis dan terarah.
-
+🔓 Bab 3: {Rahasia}
+jangan lupa share ya ke teman teman mu yang suka genre game text
 📣 Catatan:
 Setiap keputusan membentuk kisahmu. Tak ada pilihan yang benar, hanya keberanian untuk menghadapi hujan.
 
