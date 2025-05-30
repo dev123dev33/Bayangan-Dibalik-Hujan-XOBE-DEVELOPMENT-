@@ -1,7 +1,7 @@
-📌 Update 1.3 – Mei 2025
+📌 Update 1.4 – 30 Mei 2025
 ✨ Fitur Baru:
-
-🔓 Bab 3: {Rahasia}
+😱 bab 4 dan 5  
+2 bab dalam 1 kali update  nantikan update update selanjutnya ya ☆*: .｡. o(≧▽≦)o .｡.:*☆
 jangan lupa share ya ke teman teman mu yang suka genre game text
 📣 Catatan:
 Setiap keputusan membentuk kisahmu. Tak ada pilihan yang benar, hanya keberanian untuk menghadapi hujan.
