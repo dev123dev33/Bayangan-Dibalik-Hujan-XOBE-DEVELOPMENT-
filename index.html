@@ -64,7 +64,7 @@
     const introLines = [
       "🎬 <b>XOBE DEVELOPMENT</b>",
       "🎮 bersama <b>FouRkiting Studios</b>",
-      "🆕 <b>Versi 1.3 - Bab Baru: Pelangi Setelah Badai!</b>",
+      "🆕 <b>Versi 1.4 - Bab Baru: 4 dan 5 🔥</b>",
       "<br><br>mempersembahkan..."
     ];
 
@@ -217,20 +217,110 @@
       },
       ending3_surat: {
         text: () => `Surat itu berisi tawaran kerja di luar kota. Kalian memutuskan pergi bersama. 🌈<br><br><b>Akhir: Perjalanan Baru</b><br>Stats Akhir: Emosi ${player.emosi} | Harapan ${player.harapan}`,
-        options: [{ text: "🔁 Main Ulang", next: "title" }]
+        options: [
+          { text: "📖 Lanjut ke Bab 4", next: "scene10" },
+          { text: "🔁 Main Ulang", next: "title" }
+        ]
       },
       ending3_hancur: {
-        text: () => `Mira marah. Tapi akhirnya, kalian memilih untuk tetap disini. �<br><br><b>Akhir: Rumah Kami</b><br>Stats Akhir: Emosi ${player.emosi} | Harapan ${player.harapan}`,
-        options: [{ text: "🔁 Main Ulang", next: "title" }]
+        text: () => `Mira marah. Tapi akhirnya, kalian memilih untuk tetap disini. 🏠<br><br><b>Akhir: Rumah Kami</b><br>Stats Akhir: Emosi ${player.emosi} | Harapan ${player.harapan}`,
+        options: [
+          { text: "📖 Lanjut ke Bab 4", next: "scene10" },
+          { text: "🔁 Main Ulang", next: "title" }
+        ]
       },
       ending3_dengar: {
         text: () => `Mira mengaku akan pindah. Tapi kali ini, kalian berjanji tak terpisahkan. ✉️<br><br><b>Akhir: Janji Abadi</b><br>Stats Akhir: Emosi ${player.emosi} | Harapan ${player.harapan}`,
-        options: [{ text: "🔁 Main Ulang", next: "title" }]
+        options: [
+          { text: "📖 Lanjut ke Bab 4", next: "scene10" },
+          { text: "🔁 Main Ulang", next: "title" }
+        ]
       },
       ending3_pergi: {
         text: () => `Kamu pergi, meninggalkan Mira. Hujan kembali turun... 🌧️<br><br><b>Akhir: Hujan Kembali</b><br>Stats Akhir: Emosi ${player.emosi} | Harapan ${player.harapan}`,
+        options: [
+          { text: "📖 Lanjut ke Bab 4", next: "scene10" },
+          { text: "🔁 Main Ulang", next: "title" }
+        ]
+      },
+
+      // ===== BAB 4: Jejak yang Tertinggal =====
+      scene10: {
+        text: () => `🌅 <b>Bab 4: Jejak yang Tertinggal</b><br><br>
+        Waktu berlalu. Kota mulai berubah, tapi kenangan tetap tinggal. Suatu pagi, kamu menemukan buku harian lama Mira di antara tumpukan barang.<br><br>
+        Di setiap halamannya, ada kisah tentang harapan, luka, dan impian yang belum selesai.<br><br>
+        <i>"Jika suatu hari aku pergi, bukan berarti aku ingin melupakan. Aku hanya ingin kamu menemukan dirimu sendiri."</i>`,
+        options: [
+          { text: "📖 Baca lebih dalam", next: "scene11", effect: () => player.emosi += 1 },
+          { text: "💭 Renungkan pesan itu", next: "scene12", effect: () => player.harapan += 1 }
+        ]
+      },
+      scene11: {
+        text: () => `Setiap kata di buku harian itu seperti suara Mira yang berbicara langsung ke hatimu.<br><br>
+        Kamu sadar, selama ini kamu terlalu sibuk mengejar masa lalu, hingga lupa merangkul masa depan.<br><br>
+        Air matamu jatuh, tapi kali ini bukan karena kehilangan, melainkan karena rasa syukur pernah mencintai.`,
+        options: [
+          { text: "🌱 Putuskan untuk melangkah maju", next: "scene13" }
+        ]
+      },
+      scene12: {
+        text: () => `Kamu menutup buku harian itu dan menatap keluar jendela. Hujan sudah reda, tapi jejaknya masih membekas di jalanan.<br><br>
+        Kamu tahu, hidup harus terus berjalan. Tapi kenangan itu akan selalu menjadi bagian dari dirimu.`,
+        options: [
+          { text: "🌱 Putuskan untuk melangkah maju", next: "scene13" }
+        ]
+      },
+      scene13: {
+        text: () => `Kamu berdiri di depan cermin, menatap dirimu sendiri. Untuk pertama kalinya, kamu tersenyum tanpa beban.<br><br>
+        <i>"Terima kasih, Mira. Aku akan baik-baik saja."</i><br><br>
+        Saat kamu keluar rumah, pelangi muncul di langit. Sebuah pertanda bahwa setiap hujan pasti berakhir, dan harapan selalu ada.`,
+        options: [
+          { text: "🌤️ Lanjut ke Bab 5", next: "scene14" }
+        ]
+      },
+
+      // ===== BAB 5: Pelangi di Balik Luka =====
+      scene14: {
+        text: () => `🌈 <b>Bab 5: Pelangi di Balik Luka</b><br><br>
+        Beberapa tahun kemudian, kamu telah tumbuh menjadi pribadi yang lebih kuat. Luka lama memang tak pernah benar-benar hilang, tapi kini kamu mampu melihat keindahan di baliknya.<br><br>
+        Suatu hari, kamu menerima surat dari Mira. Ia menulis:<br><br>
+        <i>"Aku harap kamu bahagia, di mana pun kamu berada. Terima kasih sudah menjadi bagian dari perjalanan hidupku."</i><br><br>
+        Surat itu tidak membuatmu sedih, justru menghadirkan kehangatan yang menenangkan.`,
+        options: [
+          { text: "💌 Balas surat itu", next: "scene15", effect: () => player.harapan += 2 },
+          { text: "🌱 Simpan surat itu sebagai kenangan", next: "scene16", effect: () => player.emosi += 2 }
+        ]
+      },
+      scene15: {
+        text: () => `Kamu menulis balasan dengan hati yang lapang:<br><br>
+        <i>"Terima kasih, Mira. Aku juga bahagia. Semoga jalanmu selalu penuh cahaya."</i><br><br>
+        Setelah mengirim surat itu, kamu merasa benar-benar merdeka dari bayang-bayang masa lalu.`,
+        options: [
+          { text: "🌟 Tamatkan Kisah", next: "ending_final_bahagia" }
+        ]
+      },
+      scene16: {
+        text: () => `Kamu menyimpan surat itu di kotak kenangan. Setiap kali membacanya, kamu diingatkan bahwa luka bukan untuk disesali, tapi untuk dipeluk dan diterima.<br><br>
+        Hidupmu terus berjalan, dan kamu siap menyambut hari-hari baru.`,
+        options: [
+          { text: "🌟 Tamatkan Kisah", next: "ending_final_damai" }
+        ]
+      },
+      ending_final_bahagia: {
+        text: () => `🌟 <b>Akhir Bahagia</b><br>
+        Kamu dan Mira telah menemukan kedamaian masing-masing. Hujan telah reda, pelangi muncul, dan hidup berjalan ke depan.<br><br>
+        <b>Terima kasih telah memainkan kisah ini.</b><br>
+        Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
         options: [{ text: "🔁 Main Ulang", next: "title" }]
-      }
+      },
+      ending_final_damai: {
+        text: () => `🌟 <b>Akhir Damai</b><br>
+        Luka dan kenangan kini menjadi bagian dari kekuatanmu. Kamu telah belajar menerima, melepaskan, dan mencintai diri sendiri.<br><br>
+        <b>Terima kasih telah memainkan kisah ini.</b><br>
+        Emosi: ${player.emosi} | Harapan: ${player.harapan}`,
+        options: [{ text: "🔁 Main Ulang", next: "title" }]
+      },
+
     };
 
     function showScene(key) {
