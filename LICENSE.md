@@ -1,5 +1,5 @@
 # 📜 LICENSE — *Bayangan di Balik Hujan*  
-**Copyright © 2025 NEXGEN GAME**  
+**Copyright © 2025 XOBE DEVELOPMENT**  
 All rights reserved.
 
 ## 🔐 Strict License Addendum for *Bayangan di Balik Hujan*
@@ -20,13 +20,13 @@ This Addendum supplements the main license to ensure **maximum legal protection*
 
 - Modification is allowed only if:  
   - The changes are **significant, original, and creative** (minor or superficial edits do not qualify).  
-  - Full and clear **attribution to NEXGEN GAME** is preserved in all forms of distribution.  
+  - Full and clear **attribution to XOBE DEVELOPMENT** is preserved in all forms of distribution.  
   - This complete license text (including this Addendum) accompanies every copy or derivative.  
 - Redistribution without strict adherence to these conditions is **prohibited**.
 
 ## 👁 Attribution Enforcement
 
-- Attribution to **NEXGEN GAME** must be prominently displayed in **all public versions**, including but not limited to:  
+- Attribution to **XOBE DEVELOPMENT** must be prominently displayed in **all public versions**, including but not limited to:  
   - Splash screens or startup sequences  
   - About sections or documentation  
   - Online platforms, stores, or listings  
@@ -48,7 +48,7 @@ You may **NOT**:
 
 ## ⚖ Legal Enforcement and Remedies
 
-- NEXGEN GAME reserves the right to:  
+- XOBE DEVELOPMENT reserves the right to:  
   - Demand immediate removal of unauthorized copies from any platform.  
   - Initiate civil and criminal legal actions against violators.  
   - Conduct audits or compliance checks as needed.
@@ -56,7 +56,7 @@ You may **NOT**:
 ## 📞 Contact for Permissions and Disputes
 
 For permissions, licensing inquiries, or to report violations, please contact:  
-**NEXGEN GAME**  
+**XOBE DEVELOPMENT**  
 📧 [hackzxc153@gmail.com](mailto:hackzxc153@gmail.com)
 
 ## 📜 Binding Agreement
@@ -69,7 +69,7 @@ Failure to comply will void all granted rights and may result in legal action.
 > *“This project embodies countless hours of passion and dedication.  
 > Respect for creators and proper attribution are essential.  
 > Innovate responsibly, create passionately, but always honor the origins.”*  
-> — **NEXGEN GAME**
+> — **XOBE DEVELOPMENT*
 
 ## ⚠ Legal Disclaimer
 
