@@ -9,11 +9,11 @@ This Addendum supplements the main license to ensure **maximum legal protection*
 ## 🚫 Zero Tolerance Policy
 
 - Any violation of this license, including unauthorized use, copying, distribution, modification, or commercial exploitation, will result in **immediate termination of all rights granted** without prior notice.  
-- NEXGEN GAME reserves the right to pursue **all available legal remedies**, including civil and criminal actions, to the fullest extent permitted by law.
+- XOBE DEVELOPMENT reserves the right to pursue **all available legal remedies**, including civil and criminal actions, to the fullest extent permitted by law.
 
 ## 💼 Commercial Use Restrictions
 
-- **Any sale, commercial use, or monetization of the game or its derivatives is strictly prohibited without explicit written consent from NEXGEN GAME.**  
+- **Any sale, commercial use, or monetization of the game or its derivatives is strictly prohibited without explicit written consent from XOBE DEVELOPMENT.**  
 - Unauthorized commercial exploitation will be considered copyright infringement and treated accordingly.
 
 ## 🛠 Modification and Redistribution
